@@ -63,7 +63,7 @@ npm start #frontend run command
 - password of all demo data is 'password'
 - Schedule the task to run every Monday at midnight:
     - Go to the Django admin panel (http://localhost:8000/admin)
-    - Navigate to Periodic Tasks under Django Celery Beat.
+    - Navigate to Periodic Tasks under Periodic Tasks
     - Add a new periodic task:
         - Name: Reset Kudos Weekly
         - Task: kudos_app.tasks.reset_kudos_for_all_users
