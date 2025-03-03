@@ -36,13 +36,16 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py load_demo_data
 python manage.py createsuperuser
+python manage.py runserver #backend run command
 ```
 
 ### 3. Frontend Setup
 
 ```bash
-cd ../kudos_frontend
+# In another terminal
+cd kudos-frontend
 npm install
+npm start #frontend run command
 ```
 
 ### 4. Access the Application
@@ -50,14 +53,6 @@ npm install
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:8000
 
-### 5. Run the application
-
-```bash
-cd kudos_project
-python manage.py runserver
-cd ../kudos_frontend
-npm start
-```
 
 ### 6. Testing Details
 
