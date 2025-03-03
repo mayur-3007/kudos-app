@@ -16,7 +16,7 @@ class Command(BaseCommand):
         org2 = Organization.objects.create(name="Design Studio")
 
         # Create 3 users for each organization
-        for i in range(3):
+        for i in range(5):
             User.objects.create_user(
                 username=fake.user_name(),
                 password="password",
