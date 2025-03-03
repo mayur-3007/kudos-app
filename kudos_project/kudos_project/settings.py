@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'djoser',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +147,7 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'kudos_app.User'
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Use Redis as the broker
+CELERY_TIMEZONE = 'UTC'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'

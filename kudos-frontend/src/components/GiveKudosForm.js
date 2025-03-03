@@ -35,7 +35,7 @@ const GiveKudosForm = ({ users, onSubmit, onClose }) => {
             <MenuItem value=''>Select a user</MenuItem>
             {users.map((user) => (
               <MenuItem key={user.id} value={user.id}>
-                {user.username}
+                {user.first_name} {user.last_name}
               </MenuItem>
             ))}
           </Select>

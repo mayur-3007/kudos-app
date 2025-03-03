@@ -40,6 +40,10 @@ const Dashboard = () => {
       const receivedKudos = await getReceivedKudos()
       setKudos(receivedKudos)
       setShowForm(false)
+      setUser((prevUser) => ({
+        ...prevUser,
+        kudos_remaining: prevUser.kudos_remaining - 1,
+      }))
     } catch (err) {
       console.error('Error giving kudos:', err)
     }
@@ -49,7 +53,7 @@ const Dashboard = () => {
     <Container>
       <Box sx={{ mt: 4 }}>
         <Typography variant='h4' gutterBottom>
-          Welcome, {user?.username}
+          Welcome, {user?.first_name}
         </Typography>
         <Typography variant='subtitle1' gutterBottom>
           Organization: {user?.organization_name}
@@ -61,6 +65,7 @@ const Dashboard = () => {
         <Button
           variant='contained'
           onClick={() => setShowForm(true)}
+          disabled={user?.kudos_remaining === 0} // Disable if no kudos remaining
           sx={{ mt: 2 }}
         >
           Give Kudos
@@ -82,7 +87,7 @@ const Dashboard = () => {
             <Card key={kudo.id} sx={{ mb: 2 }}>
               <CardContent>
                 <Typography variant='h6'>
-                  {kudo.sender.username} says:
+                  {kudo.sender.first_name} {kudo.sender.last_name} says:
                 </Typography>
                 <Typography variant='body1'>{kudo.message}</Typography>
               </CardContent>

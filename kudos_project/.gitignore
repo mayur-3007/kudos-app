@@ -3,6 +3,7 @@
 # Ignore database files
 *.sqlite3
 *.db
+*.rdb
 
 # Ignore media and static files
 media/
