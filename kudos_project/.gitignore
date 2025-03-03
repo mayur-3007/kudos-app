@@ -1,0 +1,20 @@
+# Django .gitignore
+
+# Ignore database files
+*.sqlite3
+*.db
+
+# Ignore media and static files
+media/
+static/
+
+# Ignore environment variables
+.env
+.env.local
+
+# Ignore Python cache files
+*.pyc
+__pycache__/
+
+# Ignore Django secret key
+secret_key.txt

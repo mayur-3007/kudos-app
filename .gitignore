@@ -1,0 +1,21 @@
+# Root-level .gitignore
+
+# Ignore virtual environment
+venv/
+.env/
+
+# Ignore IDE-specific files
+.idea/
+.vscode/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore npm and Python build artifacts
+node_modules/
+dist/
+build/
+*.pyc
+__pycache__/
+*.egg-info/

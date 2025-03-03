@@ -1,0 +1,21 @@
+.dashboard-container {
+  padding: 20px;
+}
+
+.give-kudos-form {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.kudo-card {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+}
