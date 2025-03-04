@@ -9,6 +9,8 @@ import {
   CardContent,
   Box,
 } from '@mui/material'
+import { format } from 'date-fns'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
 
 const Dashboard = () => {
   const [user, setUser] = useState(null)
@@ -47,6 +49,10 @@ const Dashboard = () => {
     } catch (err) {
       console.error('Error giving kudos:', err)
     }
+  }
+
+  const formatTimestamp = (timestamp) => {
+    return format(new Date(timestamp), 'MMMM d, yyyy h:mm a') // Example: October 15, 2023 2:30 PM
   }
 
   return (
@@ -90,6 +96,19 @@ const Dashboard = () => {
                   {kudo.sender.first_name} {kudo.sender.last_name} says:
                 </Typography>
                 <Typography variant='body1'>{kudo.message}</Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    alignItems: 'center',
+                    mt: 1,
+                  }}
+                >
+                  <AccessTimeIcon sx={{ fontSize: 'small', mr: 0.5 }} />
+                  <Typography variant='caption' color='textSecondary'>
+                    {formatTimestamp(kudo.created_at)}
+                  </Typography>
+                </Box>
               </CardContent>
             </Card>
           ))}
