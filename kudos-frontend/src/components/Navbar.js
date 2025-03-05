@@ -3,14 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AppBar, Toolbar, Typography, Button } from '@mui/material'
 import { logout } from '../api'
 
-const Navbar = () => {
+const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const navigate = useNavigate()
-  const isAuthenticated = !!localStorage.getItem('token')
 
   const handleLogout = async () => {
     try {
       await logout()
       localStorage.removeItem('token')
+      setIsAuthenticated(false)
       navigate('/login')
     } catch (err) {
       console.error('Error logging out:', err)

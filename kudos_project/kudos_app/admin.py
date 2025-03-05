@@ -11,7 +11,7 @@ class OrganizationAdmin(admin.ModelAdmin):
 # Register the User model
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    list_display = ('username', 'email', 'organization', 'kudos_remaining')
+    list_display = ('username', 'email', 'organization', 'kudos_remaining', 'last_kudos_reset')
     list_filter = ('organization',)
     fieldsets = UserAdmin.fieldsets + (
         ('Kudos Info', {'fields': ('organization', 'kudos_remaining', 'last_kudos_reset')}),

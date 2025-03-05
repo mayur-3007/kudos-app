@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { login } from '../api'
 import { Container, TextField, Button, Typography, Box } from '@mui/material'
 
-const Login = () => {
+const Login = ({ setIsAuthenticated }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -14,6 +14,7 @@ const Login = () => {
     try {
       const data = await login(username, password)
       localStorage.setItem('token', data.token)
+      setIsAuthenticated(true)
       navigate('/dashboard')
     } catch (err) {
       setError('Invalid username or password')
