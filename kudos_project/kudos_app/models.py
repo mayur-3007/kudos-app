@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
-import datetime
+# import datetime
 
 class Organization(models.Model):
     name = models.CharField(max_length=255)
@@ -12,7 +12,7 @@ class User(AbstractUser):
     last_kudos_reset = models.DateField(default=timezone.now)
 
     def reset_kudos_if_needed(self):
-        current_week = datetime.date.today().isocalendar()[1]
+        current_week = timezone.now().date().isocalendar()[1]
         last_reset_week = self.last_kudos_reset.isocalendar()[1]
         
         if current_week != last_reset_week:
