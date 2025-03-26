@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { signup, getOrganizations } from '../api' // Add this function to api.js
+import { AuthContext } from '../context/AuthContext'
 import {
   Container,
   TextField,
@@ -24,13 +25,13 @@ const Signup = () => {
   })
   const [organizations, setOrganizations] = useState([])
   const [error, setError] = useState('')
+  const { login } = useContext(AuthContext)
   const navigate = useNavigate()
 
   useEffect(() => {
     const fetchOrganizations = async () => {
       try {
         const data = await getOrganizations()
-        console.log(data, '=========data')
         setOrganizations(data)
       } catch (err) {
         console.error('Error fetching organizations:', err)
@@ -51,7 +52,7 @@ const Signup = () => {
     e.preventDefault()
     try {
       const data = await signup(formData)
-      localStorage.setItem('token', data.token)
+      login(data.token)
       navigate('/dashboard')
     } catch (err) {
       setError('Registration failed. Please try again.')

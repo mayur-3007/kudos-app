@@ -18,7 +18,6 @@ api.interceptors.request.use((config) => {
 
 export const getOrganizations = async () => {
   const response = await api.get(`/api/organizations/?timestamp=${Date.now()}`)
-  console.log(response, '============res')
   return response.data
 }
 
@@ -27,7 +26,7 @@ export const signup = async (formData) => {
   return response.data
 }
 
-export const login = async (username, password) => {
+export const getToken = async (username, password) => {
   const response = await api.post('/api/login/', {
     username,
     password,
@@ -58,7 +57,7 @@ export const getReceivedKudos = async () => {
   return response.data
 }
 
-export const logout = async () => {
+export const removeToken = async () => {
   const response = await api.post('/api/logout/')
   return response.data
 }

@@ -1,20 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { login } from '../api'
+import { getToken } from '../api'
 import { Container, TextField, Button, Typography, Box } from '@mui/material'
+import { AuthContext } from '../context/AuthContext'
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const { login } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const data = await login(username, password)
-      localStorage.setItem('token', data.token)
-      setIsAuthenticated(true)
+      const data = await getToken(username, password)
+      login(data.token)
       navigate('/dashboard')
     } catch (err) {
       setError('Invalid username or password')

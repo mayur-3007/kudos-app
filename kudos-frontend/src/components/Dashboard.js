@@ -52,7 +52,7 @@ const Dashboard = () => {
   }
 
   const formatTimestamp = (timestamp) => {
-    return format(new Date(timestamp), 'MMMM d, yyyy h:mm a') // Example: October 15, 2023 2:30 PM
+    return format(new Date(timestamp), 'MMMM d, yyyy h:mm a')
   }
 
   return (
